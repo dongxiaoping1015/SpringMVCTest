@@ -11,6 +11,8 @@
     <title>welcome page</title>
 </head>
 <body>
-    ${message}
+    name=${param.name}
+    <br/>
+    age=${param.age}
 </body>
 </html>
