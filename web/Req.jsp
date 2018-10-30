@@ -13,17 +13,19 @@
     <script>
        function Go() {
            $.ajax({
-               url:"my.do",
-               success:function(result){
-                   $(result).each(function (t) {
-                       alert(result[t].name + " " + result[t].age);
-                   });
-           }});
+               url:"/test/register.do?name=zhang&age=12"
+
+           });
        }
     </script>
     <title>注册</title>
 </head>
 <body>
-   <input type="button" onclick="Go()" value="Go" />
+<form action="/test/register.do">
+    <input type="text" name="name">
+    <input type="text" name="age">
+    <input type="submit" value="go">
+</form>
+   <%--<input type="button" onclick="Go()" value="Go" />--%>
 </body>
 </html>
