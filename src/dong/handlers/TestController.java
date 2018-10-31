@@ -9,21 +9,19 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Date;
+
 @RequestMapping("/test")
 @Controller
 public class TestController {
 
     @RequestMapping("/register.do")
-    public String doRegister(String name, int age, Model model) throws NameException, AgeException {
-        if (!"beijing".equals(name)) {
-            throw new NameException("用户名不正确");
-        }
-        if (age > 60) {
-            throw new AgeException("年龄！");
-        }
-        model.addAttribute("name", name);
-        model.addAttribute("age", age);
-        return "redirect:other.do";
+    public ModelAndView doRegister(int age, Date birthday) {
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("birthday", birthday);
+        mv.addObject("age", age);
+        mv.setViewName("/WEB-INF/jsp/welcome.jsp");
+        return mv;
     }
 
     @RequestMapping("/other.do")

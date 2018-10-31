@@ -11,8 +11,8 @@
     <title>welcome page</title>
 </head>
 <body>
-    name=${param.name}
+    birthday=${birthday}
     <br/>
-    age=${param.age}
+    age=${age}
 </body>
 </html>
