@@ -23,4 +23,17 @@
 
     <context:component-scan base-package="dong.handlers" />
     <!--注册MVC注解驱动-->
+
+    <bean class="dong.resolvers.MyHandlerExceptionResolver" />
+
+    <!--<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">-->
+        <!--<property name="defaultErrorView" value="/error/errors.jsp" />-->
+        <!--<property name="exceptionAttribute" value="ex" />-->
+        <!--<property name="exceptionMappings">-->
+            <!--<props>-->
+                <!--<prop key="dong.exceptions.NameException">/error/nameError.jsp</prop>-->
+                <!--<prop key="dong.exceptions.AgeException">/error/ageError.jsp</prop>-->
+            <!--</props>-->
+        <!--</property>-->
+    <!--</bean>-->
 </beans>
