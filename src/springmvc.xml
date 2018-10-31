@@ -24,7 +24,7 @@
     <context:component-scan base-package="dong.handlers" />
     <!--注册MVC注解驱动-->
 
-    <bean class="dong.resolvers.MyHandlerExceptionResolver" />
+    <!--<bean class="dong.resolvers.MyHandlerExceptionResolver" />-->
 
     <!--<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">-->
         <!--<property name="defaultErrorView" value="/error/errors.jsp" />-->
