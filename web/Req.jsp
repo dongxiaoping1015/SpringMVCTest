@@ -21,10 +21,9 @@
     <title>注册</title>
 </head>
 <body>
-<form action="/test/register.do">
-    <input type="text" name="age" value="${age}">
-    <input type="text" name="birthday" value="${birthday}">
-    <input type="submit" value="go">
+<form action="/test/upload.do" method="post" enctype="multipart/form-data">
+    文件: <input type="file" name="img">
+    <input type="submit" value="上传">
 </form>
    <%--<input type="button" onclick="Go()" value="Go" />--%>
 </body>

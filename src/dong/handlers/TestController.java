@@ -12,10 +12,14 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.IOException;
 import java.text.DateFormat;
+import java.text.FieldPosition;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -31,6 +35,15 @@ public class TestController {
         mv.addObject("age", age);
         mv.setViewName("/WEB-INF/jsp/welcome.jsp");
         return mv;
+    }
+
+    @RequestMapping("/upload.do")
+    public String  doFileUpload(MultipartFile img) throws IOException {
+        String path = "/Users/dong/Projects/Java/SpringMVCTest/src";
+        String fileName = img.getOriginalFilename();
+        File file = new File(path, fileName);
+        img.transferTo(file);
+        return "/success.jsp";
     }
 
     @InitBinder
