@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
 import java.util.Date;
 
@@ -64,9 +65,13 @@ public class TestController {
     }
 
     @ExceptionHandler(TypeMismatchException.class)
-    public ModelAndView exceptionResolver(Exception ex) {
+    public ModelAndView exceptionResolver(HttpServletRequest request, Exception ex) {
+        String age = request.getParameter("age");
+        String birthday = request.getParameter("birthday");
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("/index.jsp");
+        mv.addObject("age", age);
+        mv.addObject("birthday", birthday);
+        mv.setViewName("/Req.jsp");
         return mv;
     }
 

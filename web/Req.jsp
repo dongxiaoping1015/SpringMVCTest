@@ -22,8 +22,8 @@
 </head>
 <body>
 <form action="/test/register.do">
-    <input type="text" name="age">
-    <input type="text" name="birthday">
+    <input type="text" name="age" value="${age}">
+    <input type="text" name="birthday" value="${birthday}">
     <input type="submit" value="go">
 </form>
    <%--<input type="button" onclick="Go()" value="Go" />--%>
