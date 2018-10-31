@@ -1,17 +1,23 @@
 package dong.handlers;
 
+import dong.editors.MyDateEditors;
 import dong.exceptions.AgeException;
 import dong.exceptions.NameException;
 import dong.exceptions.StudentException;
 import org.springframework.beans.TypeMismatchException;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @RequestMapping("/test")
@@ -25,6 +31,12 @@ public class TestController {
         mv.addObject("age", age);
         mv.setViewName("/WEB-INF/jsp/welcome.jsp");
         return mv;
+    }
+
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
+        DateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
+        binder.registerCustomEditor(Date.class, new MyDateEditors());
     }
 
     @RequestMapping("/other.do")

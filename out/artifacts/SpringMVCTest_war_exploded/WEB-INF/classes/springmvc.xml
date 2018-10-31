@@ -12,7 +12,8 @@
         http://www.springframework.org/schema/context/spring-context.xsd">
 
     <!--注册MVC注解驱动-->
-    <mvc:annotation-driven enable-matrix-variables="true" conversion-service="conversionService"/>
+    <mvc:annotation-driven enable-matrix-variables="true"/>
+    <!--conversion-service="conversionService"/>-->
     <!--注册处理器-->
     <!--<bean id="/my.do" class="dong.handlers.MyController" />-->
 
@@ -24,14 +25,14 @@
 
     <context:component-scan base-package="dong.handlers" />
 
-    <bean id="MyDateConvert" class="dong.convert.MyDateConvert" />
-    <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
-        <property name="converters">
-            <set>
-                <ref bean="MyDateConvert" />
-            </set>
-        </property>
-    </bean>
+    <!--<bean id="MyDateConvert" class="dong.convert.MyDateConvert" />-->
+    <!--<bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">-->
+        <!--<property name="converters">-->
+            <!--<set>-->
+                <!--<ref bean="MyDateConvert" />-->
+            <!--</set>-->
+        <!--</property>-->
+    <!--</bean>-->
 
     <!--<bean class="dong.resolvers.MyHandlerExceptionResolver" />-->
 
