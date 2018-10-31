@@ -3,12 +3,14 @@ package dong.handlers;
 import dong.exceptions.AgeException;
 import dong.exceptions.NameException;
 import dong.exceptions.StudentException;
+import org.springframework.beans.TypeMismatchException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.text.ParseException;
 import java.util.Date;
 
 @RequestMapping("/test")
@@ -60,4 +62,13 @@ public class TestController {
 
         return mv;
     }
+
+    @ExceptionHandler(TypeMismatchException.class)
+    public ModelAndView exceptionResolver(Exception ex) {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("/index.jsp");
+        return mv;
+    }
+
+
 }

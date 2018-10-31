@@ -1,6 +1,7 @@
 package dong.convert;
 
 
+import org.springframework.beans.TypeMismatchException;
 import org.springframework.core.convert.converter.Converter;
 
 import java.text.ParseException;
@@ -31,6 +32,8 @@ public class MyDateConvert implements Converter<String,Date> {
             sdf = new SimpleDateFormat("yyyy/MM/dd");
         } else if (Pattern.matches("^\\d{4}\\d{2}\\d{2}$", source)) {
             sdf = new SimpleDateFormat("yyyyMMdd");
+        } else {
+            throw new TypeMismatchException("", Date.class);
         }
         return sdf;
     }
