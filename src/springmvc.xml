@@ -25,7 +25,14 @@
 
     <context:component-scan base-package="dong.handlers" />
 
-    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" >
+        <property name="defaultEncoding" value="utf-8" />
+        <property name="maxUploadSize" value="1048576" />
+    </bean>
+
+    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="defaultErrorView" value="/error/errors.jsp" />
+    </bean>
     <!--<bean id="MyDateConvert" class="dong.convert.MyDateConvert" />-->
     <!--<bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">-->
         <!--<property name="converters">-->

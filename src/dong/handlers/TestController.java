@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.text.DateFormat;
@@ -38,8 +39,9 @@ public class TestController {
     }
 
     @RequestMapping("/upload.do")
-    public String  doFileUpload(MultipartFile img) throws IOException {
-        String path = "/Users/dong/Projects/Java/SpringMVCTest/src";
+    public String  doFileUpload(MultipartFile img, HttpSession session) throws IOException {
+        //String path = "/Users/dong/Projects/Java/SpringMVCTest/src";
+        String path = session.getServletContext().getRealPath("/images");
         String fileName = img.getOriginalFilename();
         File file = new File(path, fileName);
         img.transferTo(file);
